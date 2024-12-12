@@ -8,8 +8,17 @@
 #include "HighScoreScreen.h"
 #include "InstructionsScreen.h"
 #include "Services/HighScoreManager.h"
+#include "esp_ota_ops.h"
 
 GameMenuScreen::GameMenuScreen(Games current) : evts(6), currentGame(current){
+
+	if (currentGame == Games::Snake){
+		const esp_partition_t *mp_partition = esp_partition_find_first(ESP_PARTITION_TYPE_APP, ESP_PARTITION_SUBTYPE_APP_OTA_0, NULL);
+		if (mp_partition && esp_ota_set_boot_partition(mp_partition) == ESP_OK) {
+			esp_restart();  // Restart to boot from the new partition
+		}
+	}
+
 	switch(currentGame){
 		case Games::Artemis:{
 			gameUIPath.append("Artemis/");

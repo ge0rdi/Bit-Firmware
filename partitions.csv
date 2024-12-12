@@ -1,4 +1,7 @@
-nvs,      data, nvs,     ,        0x6000,
-phy_init, data, phy,     ,        0x1000,
-factory,  app,  factory, ,        2000K,
-storage,  data, spiffs,  ,        4000K
+nvs,      data, nvs,     ,        48K,
+otadata,  data, ota,     ,        8K,
+phy_init, data, phy,     ,        4K,
+factory,  app,  factory, ,        1400K,
+storage,  data, spiffs,  ,        2600K,
+ota_0,    app,  ota_0,   ,        1600K,
+vfs,      data, fat,     ,        2000K,
